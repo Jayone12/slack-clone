@@ -6,6 +6,7 @@ import { Success, Form, Error, Label, Input, LinkContainer, Button, Header } fro
 const SignUp = () => {
   const [email, onChangeEmail, setEmail] = useInput('');
   const [nickname, onChangeNickname, setNickname] = useInput('');
+  // handler의 경우 커스텀하기 위해 빈칸으로 지정
   const [password, , setPassword] = useInput('');
   const [passwordCheck, , setPasswordCheck] = useInput('');
   const [mismatchError, setMismatchError] = useState(false);
@@ -30,7 +31,7 @@ const SignUp = () => {
     (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       console.log(email, nickname, password, passwordCheck);
-      if (!mismatchError) {
+      if (!mismatchError && !nickname) {
         console.log('서버로 회원가입 하기');
       }
     },
